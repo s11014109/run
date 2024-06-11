@@ -1,0 +1,434 @@
+// 取得視訊串流
+async function getVideoStream() {
+    try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        const videoElement = document.getElementById('video');
+        videoElement.srcObject = stream;
+    } catch (error) {
+        console.error('取得視訊失敗:', error);
+    }
+}
+
+// 頁面載入時開始取得視訊串流
+window.addEventListener('load', getVideoStream);
+//////////////////////上面不要動/////////////////////////
+///語音導覽圖片切換///
+let imageRotationInterval; // 用于存储图片轮播的定时器
+let currentImageIndex = 0; // 当前显示图片的索引
+var images = ["img/何木火/一葉知秋.jpg", "img/何木火/人止關寫生.jpg", "img/何木火/月世界之歌.jpg", "img/何木火/月冷光寒.jpg"
+, '何木火/冰天雪地.png", "img/何木火/金碧山水.jpg", "img/何木火/紅塵夢.png", "img/何木火/飛向高峰.jpg", "img/何木火/高處不勝寒.png'
+, "img/何木火/野地清香.png", "img/何木火/尋.png", "img/何木火/絕塵.png", "img/何木火/橫越沙塵.jpg"
+
+,"img/莫內/Impression Sunrise.jpg", "img/莫內/Poplars on the Banks of the River Epte, Seen from the Marsh.jpg"
+, "img/莫內/Snow Scene at Argenteuil.jpg", "img/莫內/The Bridge, Amsterdam.jpg", "img/莫內/The Seine at Vetheuil.jpg"
+, "img/莫內/The Water-Lily Pond.jpg", "img/莫內/Vetheuil in Summer.jpg", "img/莫內/Water Lilies, Evening Effect.jpg"
+, "img/莫內/Waterloo Bridge, Gray Weather.jpg", "img/莫內/Waterloo Bridge, London.jpg"
+
+,"img/展覽/lulu豬-豬熊.jpg", "img/展覽/ㄇㄚˊ幾兔2.jpg", "img/展覽/反應過激的貓1.jpg", "img/展覽/反應過激的貓2.jpg"
+, "img/展覽/反應過激的貓3.jpg", "img/展覽/反應過激的貓4.jpg", "img/展覽/卡西法.jpg", "img/展覽/卡娜赫拉.jpg", "img/展覽/史努比.jpg"
+, "img/展覽/史努比1.jpg", "img/展覽/史努比2.jpg", "img/展覽/史努比3.jpg", "img/展覽/布丁狗.jpg", "img/展覽/吃貨恐龍展覽1.jpg"
+, "img/展覽/吃貨恐龍展覽2.jpg", "img/展覽/吃貨恐龍展覽3.jpg", "img/展覽/吃貨恐龍展覽4.jpg", "img/展覽/吃貨恐龍展覽5.jpg"
+, "img/展覽/安娜貝爾.jpg", "img/展覽/米飛兔.jpg", "img/展覽/拉拉熊展覽1.jpg", "img/展覽/拉拉熊展覽2.jpg", "img/展覽/花環豬.jpg"
+, "img/展覽/探險活寶.jpg", "img/展覽/進擊的巨人.jpg", "img/展覽/間諜家家酒.jpg", "img/展覽/熊熊遇見你.jpg", "img/展覽/厲陰宅1.jpg"
+, "img/展覽/豬朋引伴旅行社.jpg", "img/展覽/貓巴士.jpg", "img/展覽/鋼彈.jpg", "img/展覽/龍貓.jpg", "img/展覽/鯊魚貓.jpg"
+
+,"img/青山剛昌故鄉館/小柯南.jpg", "img/青山剛昌故鄉館/工藤新一的家.jpg", "img/青山剛昌故鄉館/元太.jpg", "img/青山剛昌故鄉館/公廁標示.jpg"
+, "img/青山剛昌故鄉館/少年偵探團.jpg", "img/青山剛昌故鄉館/毛利小五郎.jpg", "img/青山剛昌故鄉館/平次和和葉.jpg", "img/青山剛昌故鄉館/光彥.jpg"
+, "img/青山剛昌故鄉館/灰原.jpg", "img/青山剛昌故鄉館/步美.jpg", "img/青山剛昌故鄉館/阿利博士.jpg", "img/青山剛昌故鄉館/柯南.jpg"
+, "img/青山剛昌故鄉館/柯南2.jpg", "img/青山剛昌故鄉館/柯南吃西瓜.jpg", "img/青山剛昌故鄉館/柯南偵探服.jpg", "img/青山剛昌故鄉館/柯南博物館.jpg"
+, "img/青山剛昌故鄉館/柯南博物館火車.jpg", "img/青山剛昌故鄉館/柯南博物館火車2.jpg", "img/青山剛昌故鄉館/柯南博物館路邊.jpg"
+, "img/青山剛昌故鄉館/柯南博物館路邊.jpg", "img/青山剛昌故鄉館/基得.jpg", "img/青山剛昌故鄉館/基德和柯南.jpg", "img/青山剛昌故鄉館/新一小蘭.jpg"
+, "img/青山剛昌故鄉館/標誌牌.jpg", "img/青山剛昌故鄉館/LINE_ALBUM_柯南博物館_240521_3.jpg"
+, "img/青山剛昌故鄉館/LINE_ALBUM_柯南博物館_240521_4.jpg", "img/青山剛昌故鄉館/LINE_ALBUM_柯南博物館_240521_12.jpg"
+
+,"img/寵物/1.jpg", "img/寵物/2.jpg", "img/寵物/3.jpg", "img/寵物/4.jpg", "img/寵物/5.jpg"
+
+,"img/Taiwan/101.jpg", "img/Taiwan/101夜景.jpg", "img/Taiwan/日月潭.jpg", "img/Taiwan/日月潭2.jpg", "img/Taiwan/日落.jpg", "img/Taiwan/台中咖啡廳.jpg", 
+"img/Taiwan/台中美術館.jpg", "img/Taiwan/台南美術館.jpg", "img/Taiwan/民雄鬼屋.jpg", "img/Taiwan/永安漁港.jpg", "img/Taiwan/永安漁港2.jpg"
+, "img/Taiwan/竹圍漁港夜景.jpg", "img/Taiwan/西子灣1.jpg", "img/Taiwan/西子灣夜景.jpg", "img/Taiwan/忠烈祠.jpg", "img/Taiwan/青草湖.jpg"
+, "img/Taiwan/後山風景.jpg", "img/Taiwan/美麗島捷運站1.jpg", "img/Taiwan/美麗島捷運站2.jpg", "img/Taiwan/耶誕城.jpg", "img/Taiwan/迪化街咖啡廳.jpg"
+, "img/Taiwan/高美濕地.jpg", "img/Taiwan/高雄日落1.jpg", "img/Taiwan/高雄日落2.jpg", "img/Taiwan/高雄日落3.jpg", "img/Taiwan/高雄燈塔.jpg"
+, "img/Taiwan/高雄燈塔日落1.jpg", "img/Taiwan/高雄燈塔日落2.jpg", "img/Taiwan/高雄燈塔日落3.jpg", "img/Taiwan/情人觀景台1.jpg', 'Taiwan/情人觀景台2.jpg"
+, "img/aiwan/情人觀景台3.jpg", "img/Taiwan/鹿港.jpg", "img/Taiwan/雄鎮北門.jpg", "img/Taiwan/黃色小鴨.jpg', 'Taiwan/黃色小鴨夜景.jpg"
+, "img/Taiwan/黃色小鴨夜景2.jpg", "img/Taiwan/聖誕樹.jpg", "img/Taiwan/旗津日落.jpg", "img/Taiwan/墾丁星空1.jpg", "img/Taiwan/墾丁星空2.jpg"
+, "img/Taiwan/墾丁星空3.jpg", "img/Taiwan/龜山島.jpg", "img/Taiwan/藏風民宿龍貓.jpg"];
+
+////計時器的部分////
+var currentItemIndex = 0;
+var items = ["180BPM/10分鐘", "180BPM/15分鐘", "180BPM/20分鐘", "180BPM/30分鐘"]; // 替換為您的選項
+
+let countdownInterval; // Interval variable for countdown
+let countdownEndTime; // Variable to store countdown end time
+let remainingTime; // Variable to store remaining time of countdown
+let paused = false; // Variable to track pause state
+let isFirstMinutePassed = false;
+var audio = new Audio('節拍器.mp3'); // 請替換為您的音樂檔案路徑
+
+// Start countdown
+function startCountdown(index) {
+    const minutes = [10, 15, 20, 30]; // 對應到每個選項的分鐘數
+    const selectedMinutes = minutes[index];
+    countdownEndTime = new Date().getTime() + selectedMinutes * 60 * 1000; // Calculate end time
+    remainingTime = selectedMinutes * 60; // Calculate remaining time in seconds
+    updateCountdown(); // Update countdown immediately
+    countdownInterval = setInterval(updateCountdown, 1000); // Update countdown every second
+
+    // 撥放音樂
+    playPauseMusic();
+
+    if (!imageRotationInterval) {
+        startImageRotation(); //語音導覽  // 启动图片轮播
+    }
+}
+
+// Function to play or pause music based on countdown state
+function playPauseMusic() {
+    const pauseIcon = document.getElementById('pauseIcon');
+    if (!paused && countdownEndTime > Date.now()) {
+        playMusic(); // If not paused and countdown is running, play music
+        pauseIcon.classList.remove('fa-play');
+        pauseIcon.classList.add('fa-pause');
+    } else {
+        stopMusic(); // If paused or countdown has ended, stop music
+        pauseIcon.classList.remove('fa-pause');
+        pauseIcon.classList.add('fa-play');
+    }
+}
+
+// Function to play music
+function playMusic() {
+    audio.play();
+}
+
+// Function to stop music
+function stopMusic() {
+    audio.pause();
+}
+
+// Pause or resume countdown
+function pauseResumeCountdown() {
+    const pauseIcon = document.getElementById('pauseIcon');
+    if (!paused) {
+        clearInterval(countdownInterval); // Pause countdown if running
+        pauseIcon.classList.remove('fa-pause');
+        pauseIcon.classList.add('fa-play');
+        stopMusic(); // Pause music
+    } else {
+        countdownEndTime = new Date().getTime() + remainingTime * 1000; // Update end time for resuming countdown
+        countdownInterval = setInterval(updateCountdown, 1000); // Restart countdown
+        pauseIcon.classList.remove('fa-play');
+        pauseIcon.classList.add('fa-pause');
+        playMusic(); // Resume music
+    }
+    paused = !paused; // Toggle pause state
+    playPauseMusic(); // Play or pause music
+}
+
+// Update countdown
+function updateCountdown() {
+    if (!paused) {
+        const now = new Date().getTime(); // Get current time
+        const distance = countdownEndTime - now; // Calculate the remaining time
+        if (distance >= 0) {
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)); // Calculate minutes
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000); // Calculate seconds
+
+            // Check if the first minute has passed
+            if (minutes >= 1 && !isFirstMinutePassed) {
+                isFirstMinutePassed = true;
+            }
+
+            document.getElementById("countdownTimer").innerHTML = minutes + " 分 " + seconds + " 秒"; // Display countdown
+            remainingTime = Math.ceil(distance / 1000); // Update remaining time
+        } else {
+            clearInterval(countdownInterval); // Clear interval when countdown is finished
+            document.getElementById("countdownTimer").innerHTML = "計時結束"; // Display message when countdown is finished
+            stopMusic(); // Stop music when countdown is finished
+        }
+    } else {
+        stopMusic(); // Stop music when countdown is paused or when time is paused
+    }
+}
+
+// Update item display
+function updateItem() {
+    var itemButton = document.getElementById('itemButton');
+    itemButton.textContent = items[currentItemIndex];
+}
+
+// Move to previous item
+function previousItem() {
+    currentItemIndex = (currentItemIndex - 1 + items.length) % items.length;
+    updateItem();
+    clearInterval(countdownInterval); // Clear interval when switching items
+    paused = false; // Reset pause state when switching items
+    pauseResumeCountdown(); // Pause or resume countdown to update remaining time
+}
+
+// Move to next item
+function nextItem() {
+    currentItemIndex = (currentItemIndex + 1) % items.length;
+    updateItem();
+    clearInterval(countdownInterval); // Clear interval when switching items
+    paused = false; // Reset pause state when switching items
+    pauseResumeCountdown(); // Pause or resume countdown to update remaining time
+}
+/////////////////////////////////////////////////////////////////////////////////////////
+
+/*圖片背景按鈕*/
+var isGalleryVisible = false; // 用于追踪图片库的显示状态
+
+function toggleGallery() {
+    var gallery = document.getElementById('imageGallery');
+    var categoryMenu = document.getElementById('categoryMenu');
+
+    if (!isGalleryVisible) {
+        // 清除圖庫內容
+        gallery.innerHTML = '';
+
+        // 顯示畫廊
+        gallery.style.display = 'block';
+
+        // 建立類別按鈕
+        var categories = [ '何木火','莫內','展覽','青山剛昌故鄉館','寵物', 'TAIWAN'];
+        categories.forEach(category => {
+            var button = document.createElement('button');
+            button.textContent = category;
+            button.addEventListener('click', function() {
+                showCategory(category);
+            });
+            gallery.appendChild(button);
+        });
+
+        // 顯示類別選單
+        categoryMenu.style.display = 'block';
+
+        // 更新 isGalleryVisible
+        isGalleryVisible = true;
+    } else {
+        // 隱藏圖庫和類別選單
+        hideGallery();
+    }
+}
+
+// 背景參數
+function displayImage(imageSrc) {
+    document.body.style.backgroundImage = 'url("' + imageSrc + '")';
+    document.body.style.backgroundSize = '1700px 930px';
+    document.body.style.backgroundPosition = 'center 130px'; // 背景圖片向下移動 10px
+    document.body.style.backgroundRepeat = 'no-repeat';
+    document.body.style.backgroundAttachment = 'fixed';
+    document.body.style.overflow = 'hidden';
+    document.body.style.display = 'flex';
+    document.body.style.alignItems = 'center';
+    hideGallery();
+}
+
+// 隐藏图片库和类别菜单
+function hideGallery() {
+    var gallery = document.getElementById('imageGallery');
+    var categoryMenu = document.getElementById('categoryMenu');
+    gallery.style.display = 'none';
+    categoryMenu.style.display = 'none';
+    isGalleryVisible = false;
+}
+
+function showCategory(category) {
+    var gallery = document.getElementById('imageGallery');
+    gallery.innerHTML = '';
+
+    var images = [];
+    if (category === '何木火') {
+        images = ["img/何木火/一葉知秋.jpg", "img/何木火/人止關寫生.jpg", "img/何木火/月世界之歌.jpg", "img/何木火/月冷光寒.jpg"
+        , "何木火/冰天雪地.png", "img/何木火/金碧山水.jpg", "img/何木火/紅塵夢.png", "img/何木火/飛向高峰.jpg", "img/何木火/高處不勝寒.png"
+        , "img/何木火/野地清香.png", "img/何木火/尋.png", "img/何木火/絕塵.png", "img/何木火/橫越沙塵.jpg"]
+    } else if (category === '莫內') {
+        images = ["img/莫內/Impression Sunrise.jpg", "img/莫內/Poplars on the Banks of the River Epte, Seen from the Marsh.jpg"
+        , "img/莫內/Snow Scene at Argenteuil.jpg", "img/莫內/The Bridge, Amsterdam.jpg", "img/莫內/The Seine at Vetheuil.jpg"
+        , "img/莫內/The Water-Lily Pond.jpg", "img/莫內/Vetheuil in Summer.jpg", "img/莫內/Water Lilies, Evening Effect.jpg"
+        , "img/莫內/Waterloo Bridge, Gray Weather.jpg", "img/莫內/Waterloo Bridge, London.jpg"]
+    } else if (category === '展覽') {
+        images = [ "img/展覽/lulu豬-豬熊.jpg", "img/展覽/ㄇㄚˊ幾兔2.jpg", "img/展覽/反應過激的貓1.jpg", "img/展覽/反應過激的貓2.jpg"
+        , "img/展覽/反應過激的貓3.jpg", "img/展覽/反應過激的貓4.jpg", "img/展覽/卡西法.jpg", "img/展覽/卡娜赫拉.jpg", "img/展覽/史努比.jpg"
+        , "img/展覽/史努比1.jpg", "img/展覽/史努比2.jpg", "img/展覽/史努比3.jpg", "img/展覽/布丁狗.jpg", "img/展覽/吃貨恐龍展覽1.jpg"
+        , "img/展覽/吃貨恐龍展覽2.jpg", "img/展覽/吃貨恐龍展覽3.jpg", "img/展覽/吃貨恐龍展覽4.jpg", "img/展覽/吃貨恐龍展覽5.jpg"
+        , "img/展覽/安娜貝爾.jpg", "img/展覽/米飛兔.jpg", "img/展覽/拉拉熊展覽1.jpg", "img/展覽/拉拉熊展覽2.jpg", "img/展覽/花環豬.jpg"
+        , "img/展覽/探險活寶.jpg", "img/展覽/進擊的巨人.jpg", "img/展覽/間諜家家酒.jpg", "img/展覽/熊熊遇見你.jpg", "img/展覽/厲陰宅1.jpg"
+        , "img/展覽/豬朋引伴旅行社.jpg", "img/展覽/貓巴士.jpg", "img/展覽/鋼彈.jpg", "img/展覽/龍貓.jpg", "img/展覽/鯊魚貓.jpg"]
+    }
+      else if (category === '青山剛昌故鄉館') {
+        images = ["img/青山剛昌故鄉館/小柯南.jpg", "img/青山剛昌故鄉館/工藤新一的家.jpg", "img/青山剛昌故鄉館/元太.jpg", "img/青山剛昌故鄉館/公廁標示.jpg"
+        , "img/青山剛昌故鄉館/少年偵探團.jpg", "img/青山剛昌故鄉館/毛利小五郎.jpg", "img/青山剛昌故鄉館/平次和和葉.jpg", "img/青山剛昌故鄉館/光彥.jpg"
+        , "img/青山剛昌故鄉館/灰原.jpg", "img/青山剛昌故鄉館/步美.jpg", "img/青山剛昌故鄉館/阿利博士.jpg", "img/青山剛昌故鄉館/柯南.jpg"
+        , "img/青山剛昌故鄉館/柯南2.jpg", "img/青山剛昌故鄉館/柯南吃西瓜.jpg", "img/青山剛昌故鄉館/柯南偵探服.jpg", "img/青山剛昌故鄉館/柯南博物館.jpg"
+        , "img/青山剛昌故鄉館/柯南博物館火車.jpg", "img/青山剛昌故鄉館/柯南博物館火車2.jpg", "img/青山剛昌故鄉館/柯南博物館路邊.jpg"
+        , "img/青山剛昌故鄉館/柯南博物館路邊.jpg", "img/青山剛昌故鄉館/基得.jpg", "img/青山剛昌故鄉館/基德和柯南.jpg", "img/青山剛昌故鄉館/新一小蘭.jpg"
+        , "img/青山剛昌故鄉館/標誌牌.jpg", "img/青山剛昌故鄉館/LINE_ALBUM_柯南博物館_240521_3.jpg"
+        , "img/青山剛昌故鄉館/LINE_ALBUM_柯南博物館_240521_4.jpg"
+        , "img/青山剛昌故鄉館/LINE_ALBUM_柯南博物館_240521_12.jpg"];
+    }
+    else if (category === '寵物') {
+        images = ["img/寵物/1.jpg", "img/寵物/2.jpg", "img/寵物/3.jpg", "img/寵物/4.jpg", "img/寵物/5.jpg"];
+    }
+    else if (category === 'TAIWAN') {
+        images = ["img/Taiwan/101.jpg", "img/Taiwan/101夜景.jpg", "img/Taiwan/日月潭.jpg", "img/Taiwan/日月潭2.jpg", "img/Taiwan/日落.jpg", "img/Taiwan/台中咖啡廳.jpg", 
+        "img/Taiwan/台中美術館.jpg", "img/Taiwan/台南美術館.jpg", "img/Taiwan/民雄鬼屋.jpg", "img/Taiwan/永安漁港.jpg", "img/Taiwan/永安漁港2.jpg"
+        , "img/Taiwan/竹圍漁港夜景.jpg", "img/Taiwan/西子灣1.jpg", "img/Taiwan/西子灣夜景.jpg", "img/Taiwan/忠烈祠.jpg", "img/Taiwan/青草湖.jpg"
+        , "img/Taiwan/後山風景.jpg", "img/Taiwan/美麗島捷運站1.jpg", "img/Taiwan/美麗島捷運站2.jpg", "img/Taiwan/耶誕城.jpg", "img/Taiwan/迪化街咖啡廳.jpg"
+        , "img/Taiwan/高美濕地.jpg", "img/Taiwan/高雄日落1.jpg", "img/Taiwan/高雄日落2.jpg", "img/Taiwan/高雄日落3.jpg", "img/Taiwan/高雄燈塔.jpg"
+        , "img/Taiwan/高雄燈塔日落1.jpg", "img/Taiwan/高雄燈塔日落2.jpg", "img/Taiwan/高雄燈塔日落3.jpg", "img/Taiwan/情人觀景台1.jpg', 'Taiwan/情人觀景台2.jpg"
+        , "img/aiwan/情人觀景台3.jpg", "img/Taiwan/鹿港.jpg", "img/Taiwan/雄鎮北門.jpg", "img/Taiwan/黃色小鴨.jpg', 'Taiwan/黃色小鴨夜景.jpg"
+        , "img/Taiwan/黃色小鴨夜景2.jpg", "img/Taiwan/聖誕樹.jpg", "img/Taiwan/旗津日落.jpg", "img/Taiwan/墾丁星空1.jpg", "img/Taiwan/墾丁星空2.jpg"
+        , "img/Taiwan/墾丁星空3.jpg", "img/Taiwan/龜山島.jpg", "img/Taiwan/藏風民宿龍貓.jpg"];
+    }
+
+
+    images.forEach(img => {
+        const button = document.createElement('button');
+        const image = document.createElement('img');
+        image.src = img;
+        image.style.width = '100px';
+        image.style.height = '100px';
+
+        button.addEventListener('click', function() {
+            displayImage(img);
+        });
+        button.appendChild(image);
+        gallery.appendChild(button);
+    });
+}
+
+let isTimerRunning = true; // 标志变量，用于跟踪定时器是否正在运行
+let totalCaloriesBurned = 0; // 变量，用于跟踪总卡路里燃烧量
+
+// 每分钟更新燃烧的卡路里数
+function updateNumberEveryMinute() {
+    if (isTimerRunning) {
+        const weight = parseFloat(document.getElementById('weight').value); // 获取体重输入值
+        const exerciseTime = 1; // 因为这个函数每分钟被调用一次，所以默认是运动了一分钟
+        const calories = 6 * exerciseTime * weight / 60; // 计算每分钟燃烧的卡路里数
+        totalCaloriesBurned += calories; // 将本分钟燃烧的卡路里数添加到总数中
+        const numberElement = document.getElementById('numberElement'); // 获取用于显示卡路里数的元素
+        numberElement.textContent = totalCaloriesBurned.toFixed(2); // 保留两位小数更新卡路里数
+    }
+}
+
+// 启动或恢复计时器
+function startTimer() {
+    isTimerRunning = true;
+}
+
+// 暂停计时器
+function pauseTimer() {
+    isTimerRunning = false;
+}
+
+// 每分钟调用一次updateNumberEveryMinute函数
+const timerInterval = setInterval(updateNumberEveryMinute, 60000);
+
+// 示例用法：
+// 启动计时器
+startTimer();
+
+// 在一定时间后暂停计时器（例如，30分钟）
+setTimeout(() => {
+    pauseTimer();
+    clearInterval(timerInterval); // 停止更新卡路里
+}, 30 * 60000); // 5分钟的毫秒数
+
+
+
+
+
+// 在 window 加载时运行的函数
+window.onload = function() {
+    // 在这里添加你的其他初始化逻辑
+
+    // 监听体重输入字段的值变化
+    const weightInput = document.getElementById('weight');
+    weightInput.addEventListener('input', function() {
+        const weight = weightInput.value.trim();
+        if (weight !== '') {
+            disableWeightInput();
+        }
+    });
+}
+
+function confirmWeight() {
+    const weightInput = document.getElementById('weight');
+    const confirmButton = document.getElementById('confirmButton');
+    const weight = parseFloat(weightInput.value);
+    
+    // 检查是否有效输入了体重
+    if (!isNaN(weight) && weight > 0) {
+        // 禁用体重输入字段和确认按钮
+        weightInput.disabled = true;
+        confirmButton.disabled = true;
+        
+        // 如果需要，在这里可以调用启动计时器函数
+        // startTimer();
+    } else {
+        alert("請输入有效的體重！");
+    }
+}
+
+
+///語音導覽
+function startImageRotation() {
+    // 在这里开始使用变量
+    imageRotationInterval = setInterval(() => {
+        // 显示下一张图片
+        displayImage(images[currentImageIndex]);
+        // 更新索引
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+    }, 60000); // 切换间隔为一分鐘
+}
+
+function showVoiceGuideContent() {
+    showTextBox();
+    stopVideoStream();
+    showGif();
+    displayImage(images[0]);
+}
+
+function stopVideoStream() {
+    const videoElement = document.getElementById('video');
+    if (videoElement.srcObject) {
+        const stream = videoElement.srcObject;
+        const tracks = stream.getTracks();
+        tracks.forEach(track => track.stop());
+        videoElement.srcObject = null;
+    }
+}
+
+function showGif() {
+    // 获取 GIF 容器
+    const gifContainer = document.getElementById('gifContainer');
+    // 显示 GIF 图像
+    gifContainer.innerHTML = '<img src="runingmen.gif" alt="runmen GIF" class="gif-image">';
+    // 添加样式类名
+    gifContainer.classList.add('gif-container');
+}
+
+function start(){
+    getVideoStream();
+    hideGif();
+    hideTextBox();
+}
+
+function hideGif() {
+    // 获取 GIF 容器
+    const gifContainer = document.getElementById('gifContainer');
+    // 清空 GIF 容器的内容
+    gifContainer.innerHTML = '';
+}
+
+function showTextBox() {
+    const textBox = document.querySelector('.text-box');
+    textBox.style.display = 'block'; // 或者 'inline-block'，根据你的布局需要选择
+}
+
+function hideTextBox() {
+    const textBox = document.querySelector('.text-box');
+    textBox.style.display = 'none';
+}
