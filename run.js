@@ -15,43 +15,44 @@ window.addEventListener('load', getVideoStream);
 ///語音導覽圖片切換///
 let imageRotationInterval; // 用于存储图片轮播的定时器
 let currentImageIndex = 0; // 当前显示图片的索引
-var images = ["img/何木火/一葉知秋.jpg", "img/何木火/人止關寫生.jpg", "img/何木火/月世界之歌.jpg", "img/何木火/月冷光寒.jpg"
-, '何木火/冰天雪地.png", "img/何木火/金碧山水.jpg", "img/何木火/紅塵夢.png", "img/何木火/飛向高峰.jpg", "img/何木火/高處不勝寒.png'
-, "img/何木火/野地清香.png", "img/何木火/尋.png", "img/何木火/絕塵.png", "img/何木火/橫越沙塵.jpg"
+var images = ['何木火/一葉知秋.jpg', '何木火/人止關寫生.jpg', '何木火/月世界之歌.jpg', '何木火/月冷光寒.jpg'
+, '何木火/冰天雪地.png', '何木火/金碧山水.jpg', '何木火/紅塵夢.png', '何木火/飛向高峰.jpg', '何木火/高處不勝寒.png'
+, '何木火/野地清香.png', '何木火/尋.png', '何木火/絕塵.png', '何木火/橫越沙塵.jpg'
 
-,"img/莫內/Impression Sunrise.jpg", "img/莫內/Poplars on the Banks of the River Epte, Seen from the Marsh.jpg"
-, "img/莫內/Snow Scene at Argenteuil.jpg", "img/莫內/The Bridge, Amsterdam.jpg", "img/莫內/The Seine at Vetheuil.jpg"
-, "img/莫內/The Water-Lily Pond.jpg", "img/莫內/Vetheuil in Summer.jpg", "img/莫內/Water Lilies, Evening Effect.jpg"
-, "img/莫內/Waterloo Bridge, Gray Weather.jpg", "img/莫內/Waterloo Bridge, London.jpg"
+,'莫內/Impression Sunrise.jpg', '莫內/Poplars on the Banks of the River Epte, Seen from the Marsh.jpg'
+, '莫內/Snow Scene at Argenteuil.jpg', '莫內/The Bridge, Amsterdam.jpg', '莫內/The Seine at Vetheuil.jpg'
+, '莫內/The Water-Lily Pond.jpg', '莫內/Vetheuil in Summer.jpg', '莫內/Water Lilies, Evening Effect.jpg'
+, '莫內/Waterloo Bridge, Gray Weather.jpg', '莫內/Waterloo Bridge, London.jpg'
 
-,"img/展覽/lulu豬-豬熊.jpg", "img/展覽/ㄇㄚˊ幾兔2.jpg", "img/展覽/反應過激的貓1.jpg", "img/展覽/反應過激的貓2.jpg"
-, "img/展覽/反應過激的貓3.jpg", "img/展覽/反應過激的貓4.jpg", "img/展覽/卡西法.jpg", "img/展覽/卡娜赫拉.jpg", "img/展覽/史努比.jpg"
-, "img/展覽/史努比1.jpg", "img/展覽/史努比2.jpg", "img/展覽/史努比3.jpg", "img/展覽/布丁狗.jpg", "img/展覽/吃貨恐龍展覽1.jpg"
-, "img/展覽/吃貨恐龍展覽2.jpg", "img/展覽/吃貨恐龍展覽3.jpg", "img/展覽/吃貨恐龍展覽4.jpg", "img/展覽/吃貨恐龍展覽5.jpg"
-, "img/展覽/安娜貝爾.jpg", "img/展覽/米飛兔.jpg", "img/展覽/拉拉熊展覽1.jpg", "img/展覽/拉拉熊展覽2.jpg", "img/展覽/花環豬.jpg"
-, "img/展覽/探險活寶.jpg", "img/展覽/進擊的巨人.jpg", "img/展覽/間諜家家酒.jpg", "img/展覽/熊熊遇見你.jpg", "img/展覽/厲陰宅1.jpg"
-, "img/展覽/豬朋引伴旅行社.jpg", "img/展覽/貓巴士.jpg", "img/展覽/鋼彈.jpg", "img/展覽/龍貓.jpg", "img/展覽/鯊魚貓.jpg"
+,'展覽/lulu豬-豬熊.jpg', '展覽/ㄇㄚˊ幾兔2.jpg', '展覽/反應過激的貓1.jpg', '展覽/反應過激的貓2.jpg'
+, '展覽/反應過激的貓3.jpg', '展覽/反應過激的貓4.jpg', '展覽/卡西法.jpg', '展覽/卡娜赫拉.jpg', '展覽/史努比.jpg'
+, '展覽/史努比1.jpg', '展覽/史努比2.jpg', '展覽/史努比3.jpg', '展覽/布丁狗.jpg', '展覽/吃貨恐龍展覽1.jpg'
+, '展覽/吃貨恐龍展覽2.jpg', '展覽/吃貨恐龍展覽3.jpg', '展覽/吃貨恐龍展覽4.jpg', '展覽/吃貨恐龍展覽5.jpg'
+, '展覽/安娜貝爾.jpg', '展覽/米飛兔.jpg', '展覽/拉拉熊展覽1.jpg', '展覽/拉拉熊展覽2.jpg', '展覽/花環豬.jpg'
+, '展覽/探險活寶.jpg', '展覽/進擊的巨人.jpg', '展覽/間諜家家酒.jpg', '展覽/熊熊遇見你.jpg', '展覽/厲陰宅1.jpg'
+, '展覽/豬朋引伴旅行社.jpg', '展覽/貓巴士.jpg', '展覽/鋼彈.jpg', '展覽/龍貓.jpg', '展覽/鯊魚貓.jpg'
 
-,"img/青山剛昌故鄉館/小柯南.jpg", "img/青山剛昌故鄉館/工藤新一的家.jpg", "img/青山剛昌故鄉館/元太.jpg", "img/青山剛昌故鄉館/公廁標示.jpg"
-, "img/青山剛昌故鄉館/少年偵探團.jpg", "img/青山剛昌故鄉館/毛利小五郎.jpg", "img/青山剛昌故鄉館/平次和和葉.jpg", "img/青山剛昌故鄉館/光彥.jpg"
-, "img/青山剛昌故鄉館/灰原.jpg", "img/青山剛昌故鄉館/步美.jpg", "img/青山剛昌故鄉館/阿利博士.jpg", "img/青山剛昌故鄉館/柯南.jpg"
-, "img/青山剛昌故鄉館/柯南2.jpg", "img/青山剛昌故鄉館/柯南吃西瓜.jpg", "img/青山剛昌故鄉館/柯南偵探服.jpg", "img/青山剛昌故鄉館/柯南博物館.jpg"
-, "img/青山剛昌故鄉館/柯南博物館火車.jpg", "img/青山剛昌故鄉館/柯南博物館火車2.jpg", "img/青山剛昌故鄉館/柯南博物館路邊.jpg"
-, "img/青山剛昌故鄉館/柯南博物館路邊.jpg", "img/青山剛昌故鄉館/基得.jpg", "img/青山剛昌故鄉館/基德和柯南.jpg", "img/青山剛昌故鄉館/新一小蘭.jpg"
-, "img/青山剛昌故鄉館/標誌牌.jpg", "img/青山剛昌故鄉館/LINE_ALBUM_柯南博物館_240521_3.jpg"
-, "img/青山剛昌故鄉館/LINE_ALBUM_柯南博物館_240521_4.jpg", "img/青山剛昌故鄉館/LINE_ALBUM_柯南博物館_240521_12.jpg"
+,'青山剛昌故鄉館/小柯南.jpg', '青山剛昌故鄉館/工藤新一的家.jpg', '青山剛昌故鄉館/元太.jpg', '青山剛昌故鄉館/公廁標示.jpg'
+, '青山剛昌故鄉館/少年偵探團.jpg', '青山剛昌故鄉館/毛利小五郎.jpg', '青山剛昌故鄉館/平次和和葉.jpg', '青山剛昌故鄉館/光彥.jpg'
+, '青山剛昌故鄉館/灰原.jpg', '青山剛昌故鄉館/步美.jpg', '青山剛昌故鄉館/阿利博士.jpg', '青山剛昌故鄉館/柯南.jpg'
+, '青山剛昌故鄉館/柯南2.jpg', '青山剛昌故鄉館/柯南吃西瓜.jpg', '青山剛昌故鄉館/柯南偵探服.jpg', '青山剛昌故鄉館/柯南博物館.jpg'
+, '青山剛昌故鄉館/柯南博物館火車.jpg', '青山剛昌故鄉館/柯南博物館火車2.jpg', '青山剛昌故鄉館/柯南博物館路邊.jpg'
+, '青山剛昌故鄉館/柯南博物館路邊.jpg', '青山剛昌故鄉館/基得.jpg', '青山剛昌故鄉館/基德和柯南.jpg', '青山剛昌故鄉館/新一小蘭.jpg'
+, '青山剛昌故鄉館/標誌牌.jpg', '青山剛昌故鄉館/LINE_ALBUM_柯南博物館_240521_3.jpg'
+, '青山剛昌故鄉館/LINE_ALBUM_柯南博物館_240521_4.jpg'
+, '青山剛昌故鄉館/LINE_ALBUM_柯南博物館_240521_12.jpg'
 
-,"img/寵物/1.jpg", "img/寵物/2.jpg", "img/寵物/3.jpg", "img/寵物/4.jpg", "img/寵物/5.jpg"
+,'寵物/1.jpg', '寵物/2.jpg', '寵物/3.jpg', '寵物/4.jpg', '寵物/5.jpg'
 
-,"img/Taiwan/101.jpg", "img/Taiwan/101夜景.jpg", "img/Taiwan/日月潭.jpg", "img/Taiwan/日月潭2.jpg", "img/Taiwan/日落.jpg", "img/Taiwan/台中咖啡廳.jpg", 
-"img/Taiwan/台中美術館.jpg", "img/Taiwan/台南美術館.jpg", "img/Taiwan/民雄鬼屋.jpg", "img/Taiwan/永安漁港.jpg", "img/Taiwan/永安漁港2.jpg"
-, "img/Taiwan/竹圍漁港夜景.jpg", "img/Taiwan/西子灣1.jpg", "img/Taiwan/西子灣夜景.jpg", "img/Taiwan/忠烈祠.jpg", "img/Taiwan/青草湖.jpg"
-, "img/Taiwan/後山風景.jpg", "img/Taiwan/美麗島捷運站1.jpg", "img/Taiwan/美麗島捷運站2.jpg", "img/Taiwan/耶誕城.jpg", "img/Taiwan/迪化街咖啡廳.jpg"
-, "img/Taiwan/高美濕地.jpg", "img/Taiwan/高雄日落1.jpg", "img/Taiwan/高雄日落2.jpg", "img/Taiwan/高雄日落3.jpg", "img/Taiwan/高雄燈塔.jpg"
-, "img/Taiwan/高雄燈塔日落1.jpg", "img/Taiwan/高雄燈塔日落2.jpg", "img/Taiwan/高雄燈塔日落3.jpg", "img/Taiwan/情人觀景台1.jpg', 'Taiwan/情人觀景台2.jpg"
-, "img/aiwan/情人觀景台3.jpg", "img/Taiwan/鹿港.jpg", "img/Taiwan/雄鎮北門.jpg", "img/Taiwan/黃色小鴨.jpg', 'Taiwan/黃色小鴨夜景.jpg"
-, "img/Taiwan/黃色小鴨夜景2.jpg", "img/Taiwan/聖誕樹.jpg", "img/Taiwan/旗津日落.jpg", "img/Taiwan/墾丁星空1.jpg", "img/Taiwan/墾丁星空2.jpg"
-, "img/Taiwan/墾丁星空3.jpg", "img/Taiwan/龜山島.jpg", "img/Taiwan/藏風民宿龍貓.jpg"];
+,'Taiwan/101.jpg', 'Taiwan/101夜景.jpg', 'Taiwan/日月潭.jpg', 'Taiwan/日月潭2.jpg', 'Taiwan/日落.jpg', 'Taiwan/台中咖啡廳.jpg', 
+'Taiwan/台中美術館.jpg', 'Taiwan/台南美術館.jpg', 'Taiwan/民雄鬼屋.jpg', 'Taiwan/永安漁港.jpg', 'Taiwan/永安漁港2.jpg'
+, 'Taiwan/竹圍漁港夜景.jpg', 'Taiwan/西子灣1.jpg', 'Taiwan/西子灣夜景.jpg', 'Taiwan/忠烈祠.jpg', 'Taiwan/青草湖.jpg'
+, 'Taiwan/後山風景.jpg', 'Taiwan/美麗島捷運站1.jpg', 'Taiwan/美麗島捷運站2.jpg', 'Taiwan/耶誕城.jpg', 'Taiwan/迪化街咖啡廳.jpg'
+, 'Taiwan/高美濕地.jpg', 'Taiwan/高雄日落1.jpg', 'Taiwan/高雄日落2.jpg', 'Taiwan/高雄日落3.jpg', 'Taiwan/高雄燈塔.jpg'
+, 'Taiwan/高雄燈塔日落1.jpg', 'Taiwan/高雄燈塔日落2.jpg', 'Taiwan/高雄燈塔日落3.jpg', 'Taiwan/情人觀景台1.jpg', 'Taiwan/情人觀景台2.jpg'
+, 'Taiwan/情人觀景台3.jpg', 'Taiwan/鹿港.jpg', 'Taiwan/雄鎮北門.jpg', 'Taiwan/黃色小鴨.jpg', 'Taiwan/黃色小鴨夜景.jpg'
+, 'Taiwan/黃色小鴨夜景2.jpg', 'Taiwan/聖誕樹.jpg', 'Taiwan/旗津日落.jpg', 'Taiwan/墾丁星空1.jpg', 'Taiwan/墾丁星空2.jpg'
+, 'Taiwan/墾丁星空3.jpg', 'Taiwan/龜山島.jpg', 'Taiwan/藏風民宿龍貓.jpg'];
 
 ////計時器的部分////
 var currentItemIndex = 0;
@@ -239,47 +240,47 @@ function showCategory(category) {
 
     var images = [];
     if (category === '何木火') {
-        images = ["img/何木火/一葉知秋.jpg", "img/何木火/人止關寫生.jpg", "img/何木火/月世界之歌.jpg", "img/何木火/月冷光寒.jpg"
-        , "何木火/冰天雪地.png", "img/何木火/金碧山水.jpg", "img/何木火/紅塵夢.png", "img/何木火/飛向高峰.jpg", "img/何木火/高處不勝寒.png"
-        , "img/何木火/野地清香.png", "img/何木火/尋.png", "img/何木火/絕塵.png", "img/何木火/橫越沙塵.jpg"]
+        images = ['何木火/一葉知秋.jpg', '何木火/人止關寫生.jpg', '何木火/月世界之歌.jpg', '何木火/月冷光寒.jpg'
+        , '何木火/冰天雪地.png', '何木火/金碧山水.jpg', '何木火/紅塵夢.png', '何木火/飛向高峰.jpg', '何木火/高處不勝寒.png'
+        , '何木火/野地清香.png', '何木火/尋.png', '何木火/絕塵.png', '何木火/橫越沙塵.jpg']
     } else if (category === '莫內') {
-        images = ["img/莫內/Impression Sunrise.jpg", "img/莫內/Poplars on the Banks of the River Epte, Seen from the Marsh.jpg"
-        , "img/莫內/Snow Scene at Argenteuil.jpg", "img/莫內/The Bridge, Amsterdam.jpg", "img/莫內/The Seine at Vetheuil.jpg"
-        , "img/莫內/The Water-Lily Pond.jpg", "img/莫內/Vetheuil in Summer.jpg", "img/莫內/Water Lilies, Evening Effect.jpg"
-        , "img/莫內/Waterloo Bridge, Gray Weather.jpg", "img/莫內/Waterloo Bridge, London.jpg"]
+        images = ['莫內/Impression Sunrise.jpg', '莫內/Poplars on the Banks of the River Epte, Seen from the Marsh.jpg'
+        , '莫內/Snow Scene at Argenteuil.jpg', '莫內/The Bridge, Amsterdam.jpg', '莫內/The Seine at Vetheuil.jpg'
+        , '莫內/The Water-Lily Pond.jpg', '莫內/Vetheuil in Summer.jpg', '莫內/Water Lilies, Evening Effect.jpg'
+        , '莫內/Waterloo Bridge, Gray Weather.jpg', '莫內/Waterloo Bridge, London.jpg']
     } else if (category === '展覽') {
-        images = [ "img/展覽/lulu豬-豬熊.jpg", "img/展覽/ㄇㄚˊ幾兔2.jpg", "img/展覽/反應過激的貓1.jpg", "img/展覽/反應過激的貓2.jpg"
-        , "img/展覽/反應過激的貓3.jpg", "img/展覽/反應過激的貓4.jpg", "img/展覽/卡西法.jpg", "img/展覽/卡娜赫拉.jpg", "img/展覽/史努比.jpg"
-        , "img/展覽/史努比1.jpg", "img/展覽/史努比2.jpg", "img/展覽/史努比3.jpg", "img/展覽/布丁狗.jpg", "img/展覽/吃貨恐龍展覽1.jpg"
-        , "img/展覽/吃貨恐龍展覽2.jpg", "img/展覽/吃貨恐龍展覽3.jpg", "img/展覽/吃貨恐龍展覽4.jpg", "img/展覽/吃貨恐龍展覽5.jpg"
-        , "img/展覽/安娜貝爾.jpg", "img/展覽/米飛兔.jpg", "img/展覽/拉拉熊展覽1.jpg", "img/展覽/拉拉熊展覽2.jpg", "img/展覽/花環豬.jpg"
-        , "img/展覽/探險活寶.jpg", "img/展覽/進擊的巨人.jpg", "img/展覽/間諜家家酒.jpg", "img/展覽/熊熊遇見你.jpg", "img/展覽/厲陰宅1.jpg"
-        , "img/展覽/豬朋引伴旅行社.jpg", "img/展覽/貓巴士.jpg", "img/展覽/鋼彈.jpg", "img/展覽/龍貓.jpg", "img/展覽/鯊魚貓.jpg"]
+        images = [ '展覽/lulu豬-豬熊.jpg', '展覽/ㄇㄚˊ幾兔2.jpg', '展覽/反應過激的貓1.jpg', '展覽/反應過激的貓2.jpg'
+        , '展覽/反應過激的貓3.jpg', '展覽/反應過激的貓4.jpg', '展覽/卡西法.jpg', '展覽/卡娜赫拉.jpg', '展覽/史努比.jpg'
+        , '展覽/史努比1.jpg', '展覽/史努比2.jpg', '展覽/史努比3.jpg', '展覽/布丁狗.jpg', '展覽/吃貨恐龍展覽1.jpg'
+        , '展覽/吃貨恐龍展覽2.jpg', '展覽/吃貨恐龍展覽3.jpg', '展覽/吃貨恐龍展覽4.jpg', '展覽/吃貨恐龍展覽5.jpg'
+        , '展覽/安娜貝爾.jpg', '展覽/米飛兔.jpg', '展覽/拉拉熊展覽1.jpg', '展覽/拉拉熊展覽2.jpg', '展覽/花環豬.jpg'
+        , '展覽/探險活寶.jpg', '展覽/進擊的巨人.jpg', '展覽/間諜家家酒.jpg', '展覽/熊熊遇見你.jpg', '展覽/厲陰宅1.jpg'
+        , '展覽/豬朋引伴旅行社.jpg', '展覽/貓巴士.jpg', '展覽/鋼彈.jpg', '展覽/龍貓.jpg', '展覽/鯊魚貓.jpg']
     }
       else if (category === '青山剛昌故鄉館') {
-        images = ["img/青山剛昌故鄉館/小柯南.jpg", "img/青山剛昌故鄉館/工藤新一的家.jpg", "img/青山剛昌故鄉館/元太.jpg", "img/青山剛昌故鄉館/公廁標示.jpg"
-        , "img/青山剛昌故鄉館/少年偵探團.jpg", "img/青山剛昌故鄉館/毛利小五郎.jpg", "img/青山剛昌故鄉館/平次和和葉.jpg", "img/青山剛昌故鄉館/光彥.jpg"
-        , "img/青山剛昌故鄉館/灰原.jpg", "img/青山剛昌故鄉館/步美.jpg", "img/青山剛昌故鄉館/阿利博士.jpg", "img/青山剛昌故鄉館/柯南.jpg"
-        , "img/青山剛昌故鄉館/柯南2.jpg", "img/青山剛昌故鄉館/柯南吃西瓜.jpg", "img/青山剛昌故鄉館/柯南偵探服.jpg", "img/青山剛昌故鄉館/柯南博物館.jpg"
-        , "img/青山剛昌故鄉館/柯南博物館火車.jpg", "img/青山剛昌故鄉館/柯南博物館火車2.jpg", "img/青山剛昌故鄉館/柯南博物館路邊.jpg"
-        , "img/青山剛昌故鄉館/柯南博物館路邊.jpg", "img/青山剛昌故鄉館/基得.jpg", "img/青山剛昌故鄉館/基德和柯南.jpg", "img/青山剛昌故鄉館/新一小蘭.jpg"
-        , "img/青山剛昌故鄉館/標誌牌.jpg", "img/青山剛昌故鄉館/LINE_ALBUM_柯南博物館_240521_3.jpg"
-        , "img/青山剛昌故鄉館/LINE_ALBUM_柯南博物館_240521_4.jpg"
-        , "img/青山剛昌故鄉館/LINE_ALBUM_柯南博物館_240521_12.jpg"];
+        images = ['青山剛昌故鄉館/小柯南.jpg', '青山剛昌故鄉館/工藤新一的家.jpg', '青山剛昌故鄉館/元太.jpg', '青山剛昌故鄉館/公廁標示.jpg'
+        , '青山剛昌故鄉館/少年偵探團.jpg', '青山剛昌故鄉館/毛利小五郎.jpg', '青山剛昌故鄉館/平次和和葉.jpg', '青山剛昌故鄉館/光彥.jpg'
+        , '青山剛昌故鄉館/灰原.jpg', '青山剛昌故鄉館/步美.jpg', '青山剛昌故鄉館/阿利博士.jpg', '青山剛昌故鄉館/柯南.jpg'
+        , '青山剛昌故鄉館/柯南2.jpg', '青山剛昌故鄉館/柯南吃西瓜.jpg', '青山剛昌故鄉館/柯南偵探服.jpg', '青山剛昌故鄉館/柯南博物館.jpg'
+        , '青山剛昌故鄉館/柯南博物館火車.jpg', '青山剛昌故鄉館/柯南博物館火車2.jpg', '青山剛昌故鄉館/柯南博物館路邊.jpg'
+        , '青山剛昌故鄉館/柯南博物館路邊.jpg', '青山剛昌故鄉館/基得.jpg', '青山剛昌故鄉館/基德和柯南.jpg', '青山剛昌故鄉館/新一小蘭.jpg'
+        , '青山剛昌故鄉館/標誌牌.jpg', '青山剛昌故鄉館/LINE_ALBUM_柯南博物館_240521_3.jpg'
+        , '青山剛昌故鄉館/LINE_ALBUM_柯南博物館_240521_4.jpg'
+        , '青山剛昌故鄉館/LINE_ALBUM_柯南博物館_240521_12.jpg'];
     }
     else if (category === '寵物') {
-        images = ["img/寵物/1.jpg", "img/寵物/2.jpg", "img/寵物/3.jpg", "img/寵物/4.jpg", "img/寵物/5.jpg"];
+        images = ['寵物/1.jpg', '寵物/2.jpg', '寵物/3.jpg', '寵物/4.jpg', '寵物/5.jpg'];
     }
     else if (category === 'TAIWAN') {
-        images = ["img/Taiwan/101.jpg", "img/Taiwan/101夜景.jpg", "img/Taiwan/日月潭.jpg", "img/Taiwan/日月潭2.jpg", "img/Taiwan/日落.jpg", "img/Taiwan/台中咖啡廳.jpg", 
-        "img/Taiwan/台中美術館.jpg", "img/Taiwan/台南美術館.jpg", "img/Taiwan/民雄鬼屋.jpg", "img/Taiwan/永安漁港.jpg", "img/Taiwan/永安漁港2.jpg"
-        , "img/Taiwan/竹圍漁港夜景.jpg", "img/Taiwan/西子灣1.jpg", "img/Taiwan/西子灣夜景.jpg", "img/Taiwan/忠烈祠.jpg", "img/Taiwan/青草湖.jpg"
-        , "img/Taiwan/後山風景.jpg", "img/Taiwan/美麗島捷運站1.jpg", "img/Taiwan/美麗島捷運站2.jpg", "img/Taiwan/耶誕城.jpg", "img/Taiwan/迪化街咖啡廳.jpg"
-        , "img/Taiwan/高美濕地.jpg", "img/Taiwan/高雄日落1.jpg", "img/Taiwan/高雄日落2.jpg", "img/Taiwan/高雄日落3.jpg", "img/Taiwan/高雄燈塔.jpg"
-        , "img/Taiwan/高雄燈塔日落1.jpg", "img/Taiwan/高雄燈塔日落2.jpg", "img/Taiwan/高雄燈塔日落3.jpg", "img/Taiwan/情人觀景台1.jpg', 'Taiwan/情人觀景台2.jpg"
-        , "img/aiwan/情人觀景台3.jpg", "img/Taiwan/鹿港.jpg", "img/Taiwan/雄鎮北門.jpg", "img/Taiwan/黃色小鴨.jpg', 'Taiwan/黃色小鴨夜景.jpg"
-        , "img/Taiwan/黃色小鴨夜景2.jpg", "img/Taiwan/聖誕樹.jpg", "img/Taiwan/旗津日落.jpg", "img/Taiwan/墾丁星空1.jpg", "img/Taiwan/墾丁星空2.jpg"
-        , "img/Taiwan/墾丁星空3.jpg", "img/Taiwan/龜山島.jpg", "img/Taiwan/藏風民宿龍貓.jpg"];
+        images = ['Taiwan/101.jpg', 'Taiwan/101夜景.jpg', 'Taiwan/日月潭.jpg', 'Taiwan/日月潭2.jpg', 'Taiwan/日落.jpg', 'Taiwan/台中咖啡廳.jpg', 
+        'Taiwan/台中美術館.jpg', 'Taiwan/台南美術館.jpg', 'Taiwan/民雄鬼屋.jpg', 'Taiwan/永安漁港.jpg', 'Taiwan/永安漁港2.jpg'
+        , 'Taiwan/竹圍漁港夜景.jpg', 'Taiwan/西子灣1.jpg', 'Taiwan/西子灣夜景.jpg', 'Taiwan/忠烈祠.jpg', 'Taiwan/青草湖.jpg'
+        , 'Taiwan/後山風景.jpg', 'Taiwan/美麗島捷運站1.jpg', 'Taiwan/美麗島捷運站2.jpg', 'Taiwan/耶誕城.jpg', 'Taiwan/迪化街咖啡廳.jpg'
+        , 'Taiwan/高美濕地.jpg', 'Taiwan/高雄日落1.jpg', 'Taiwan/高雄日落2.jpg', 'Taiwan/高雄日落3.jpg', 'Taiwan/高雄燈塔.jpg'
+        , 'Taiwan/高雄燈塔日落1.jpg', 'Taiwan/高雄燈塔日落2.jpg', 'Taiwan/高雄燈塔日落3.jpg', 'Taiwan/情人觀景台1.jpg', 'Taiwan/情人觀景台2.jpg'
+        , 'Taiwan/情人觀景台3.jpg', 'Taiwan/鹿港.jpg', 'Taiwan/雄鎮北門.jpg', 'Taiwan/黃色小鴨.jpg', 'Taiwan/黃色小鴨夜景.jpg'
+        , 'Taiwan/黃色小鴨夜景2.jpg', 'Taiwan/聖誕樹.jpg', 'Taiwan/旗津日落.jpg', 'Taiwan/墾丁星空1.jpg', 'Taiwan/墾丁星空2.jpg'
+        , 'Taiwan/墾丁星空3.jpg', 'Taiwan/龜山島.jpg', 'Taiwan/藏風民宿龍貓.jpg'];
     }
 
 
