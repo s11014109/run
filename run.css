@@ -98,7 +98,7 @@ hr {
   border: none; /* 删除默认的边框样式 */
   border-top: 1px solid #333; /* 设置顶部边框为实线，颜色为深灰色 */
   margin-left: -1000pt;
-  width: 1000%; /* 设置分界线的宽度为其容器的100% */
+  width: 100%; /* 设置分界线的宽度为其容器的100% */
   text-align: left; /* 将分界线文本左对齐 */
 }
 
