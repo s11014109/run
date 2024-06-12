@@ -250,7 +250,7 @@ function showCategory(category) {
 
     }
       else if (category === '弗里德里希') {
-        images = ['弗里德里希/Two Men Contemplating the Moon.jpg', '弗里德里希/View of Arkona with Moon Rising.jpg', '弗里德里希/Bohemian Landscape.jpg'
+        images = ['弗里德里希/Two Men Contemplating the Moon.jpg', '弗里德里希/Bohemian Landscape.jpg'
         , '弗里德里希/Boats in the Harbour at Evening.jpg', '弗里德里希/Evening.jpg', '弗里德里希/Day.jpg', '弗里德里希/Landscape with rainbow.jpg'
         , '弗里德里希/Landscape with Mountain Lake Morning.jpg','弗里德里希/Morning.jpg','弗里德里希/Hills and Ploughed Fields near Dresden.jpg'
         ,'弗里德里希/Landscape with Oak Trees and a Hunter.jpg' ,'弗里德里希/Rocky Reef on the Seashore.jpg' ,'弗里德里希/Solitary Tree.jpg','弗里德里希/Morning in the Mountains.jpg']
