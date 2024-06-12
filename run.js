@@ -30,7 +30,7 @@ var images = ['何木火/一葉知秋.jpg', '何木火/人止關寫生.jpg', '�
 , '畢卡索/Studio.jpg', '畢卡索/Plaster head and arm.jpg', '畢卡索/The sculptor.jpg', '畢卡索/Fairground.jpg', '畢卡索/Bathing.jpg'   
 , '畢卡索/Harlequin family.jpg','畢卡索/The Kiss.jpg','畢卡索/Reclining Woman.jpg','畢卡索/Still life.jpg','畢卡索/Beach game and rescue.jpg'
 
-,'弗里德里希/Two Men Contemplating the Moon.jpg', '弗里德里希/View of Arkona with Moon Rising.jpg', '弗里德里希/Bohemian Landscape.jpg'
+,'弗里德里希/Two Men Contemplating the Moon.jpg', '弗里德里希/Bohemian Landscape.jpg'
 , '弗里德里希/Boats in the Harbour at Evening.jpg', '弗里德里希/Evening.jpg', '弗里德里希/Day.jpg', '弗里德里希/Landscape with rainbow.jpg'
 , '弗里德里希/Landscape with Mountain Lake Morning.jpg', '弗里德里希/Morning.jpg','弗里德里希/Hills and Ploughed Fields near Dresden.jpg'
 
