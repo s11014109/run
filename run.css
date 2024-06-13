@@ -240,17 +240,16 @@ input[type="number"] {
 
 
 
-
-  
+/* 以下是圖片庫 */
 #galleryButton { 
   width: 30px;
   height: 30px;
   position: absolute;
-  top: 0;
-  right: 0;
-  margin-top: 0;
-  margin-right: 0;
+  margin-top: 0px; /* 增加顶部间距 */
+  margin-left: 90px; /* 增加左侧间距 */
 }
+
+
 
 
 }
