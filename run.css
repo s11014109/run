@@ -249,13 +249,8 @@ input[type="number"] {
     right: 170px;
 }
 
-
-
-
-
-
 }
-/*上面勿動上面勿動上面勿動上面勿動上面勿動上面勿動*/
+
 
 
 /*彈跳視窗*/
@@ -308,22 +303,30 @@ input[type="number"] {
 
 
 
+
 .countdown-container {
   display: flex;
   align-items: center;
   margin-left: -400px;
 }
 
+/* 時間字體 */
 .countdown-container span {
   margin-right: 10px;
+  margin-top: 25px;
   color: rgb(255, 255, 255); /* 设置白色文字颜色 */
+  font-size: 25px; /* Increase font size */
 }
-.countdown-timer{
-    margin-right:10px;
-  color: rgb(255, 255, 255); /* 设置白色文字颜色 */
-  padding: 5px 10px; /* 添加内边距 */
-  border-radius: 5px; /* 添加圆角 */
 
+/* 倒數 */
+.countdown-timer {
+  margin-right: 10px;
+  margin-top: 15px;
+  color: rgb(255, 255, 255); /* 设置白色文字颜色 */
+  padding: 10px 10px 0px 10px; /* 调整内边距，上内边距增大，底内边距减小 */
+  border-radius: 5px; /* 添加圆角 */
+  border: none; /* 移除边框 */
+  font-size: 25px; /* Increase font size */
 }
 
 
