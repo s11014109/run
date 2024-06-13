@@ -1,5 +1,5 @@
-/*以下是*//* 上方黑色滑動導覽列樣式 */
- #navbar {
+/* 上方黑色滑動導覽列樣式 */
+#navbar {
     background-color: #333;
     position: fixed;
     width: 95%;
@@ -12,67 +12,66 @@
     margin: 10px;
     top: 0px;
     transition: top 0.3s;
-  }
-  
-  #navbar a {
+}
+
+#navbar a {
     color: #f2f2f2;
     text-align: center;
     padding: 15px;
     text-decoration: none;
     font-size: 17px;
-  }
-  
-  #navbar a:hover {
+}
+
+#navbar a:hover {
     background-color: #ddd;
     color: black;
-  }
-  
-  /* 新的導覽列結構 */
-  .logo1 {
+}
+
+/* 新的導覽列結構 */
+.logo1 {
     display: flex;
     align-items: center;
-  }
-  
-  .logo1 img {
+}
+
+.logo1 img {
     width: 50px;
-  }
-  
-  .logo1 a {
+}
+
+.logo1 a {
     color: #fff;
     font-size: 16px;
     font-weight: bold;
     text-decoration: none;
     margin-left: 10px;
-  }
-  
-  .menu {
+}
+
+.menu {
     list-style: none;
     display: flex;
     margin-left: auto;
-    
-  }
-  
-  .menu li {
+}
+
+.menu li {
     margin-right: 20px;
-  }
-  
-  .menu a {
+}
+
+.menu a {
     text-decoration: none;
     color: white;
     padding: 15px;
     transition: background-color 0.3s ease;
     border-radius: 10px; /* 增大按钮的圆角 */
-  }
-  
-  .menu a:hover {
+}
+
+.menu a:hover {
     background-color: #555;
-  }
-  
-  .dropdown {
+}
+
+.dropdown {
     position: relative;
-  }
-  
-  .dropdown-content {
+}
+
+.dropdown-content {
     display: none;
     position: absolute;
     background-color: #333;
@@ -81,281 +80,188 @@
     z-index: 1;
     top: 100%;
     right: 0;
-  }
-  
-  .dropdown-content a {
+}
+
+.dropdown-content a {
     color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
-    
-  }
-/*以上是*//* 上方黑色滑動導覽列樣式 */
-
-
-
-
-/*以下是*//* 灰色區域(就是全網頁區域) */
-.gray-container {
-  padding: 20px; /* 视频元素周围的内边距 */
-  display: flex; /* 使用 flexbox 进行布局 */
-  flex-direction: column; /* 列布局 */
-  align-items: center; /* 水平居中对齐 */
-  position: absolute; /* 绝对定位 */
-  top: 5px; /* 距离顶部的偏移量 */
-  left: 0; /* 左对齐 */
-  right: 0; /* 右对齐 */
-  font-size: 16pt;
-  margin-top: 0px;
 }
 
+/* 灰色區域 */
+.gray-container {
+    padding: 20px; /* 视频元素周围的内边距 */
+    display: flex; /* 使用 flexbox 进行布局 */
+    flex-direction: column; /* 列布局 */
+    align-items: center; /* 水平居中对齐 */
+    position: absolute; /* 绝对定位 */
+    top: 5px; /* 距离顶部的偏移量 */
+    left: 0; /* 左对齐 */
+    right: 0; /* 右对齐 */
+    font-size: 16pt;
+    margin-top: 0px;
+}
 
-
-  /*以下是*//* 擷取攝影機 */
-  #video {
+/* 擷取攝影機 */
+#video {
     width: 640px; /* Set width of video element */
     height: 480px; /* Set height of video element */
-  }
+}
 
-
-  
-  /*以下是*//* 開始和語音導覽按鈕 */
-  #start {
+/* 開始和語音導覽按鈕 */
+#start {
     margin-left: -270pt;
     width: 90px; /* 设置按钮宽度 */
     height: 40px; /* 设置按钮高度 */
     font-size: 16px;
-    }
-  #voice_guide {
+}
+
+#voice_guide {
     margin-left: 10pt;
     margin-right: 250pt;
     width: 90px; /* 设置按钮宽度 */
     height: 40px; /* 设置按钮高度 */
     font-size: 16px;
-  }
-  /*以上是*//* 開始和語音導覽按鈕 */
+}
 
-
-
-
-  /*以下是*//* 計時器按钮样式 */
-
-  .switch-button {
+/* 計時器按钮样式 */
+.switch-button {
     margin-right: 50%; /* 增加右侧间距 */
     display: flex; /* 使用 Flex 布局 */
     justify-content: space-between; /* 在容器内平均分布子元素 */
     align-items: center; /* 垂直居中对齐 */
     width: 190px; /* 增加宽度以容纳暂停按钮 */
     height: 40px; /* 设置按钮高度 */
-  
-  }
-  .switch-button button {
+}
+
+.switch-button button {
     padding: 10px 20px; /* 增大按钮的内边距 */
     background: none;
     border: none;
     cursor: pointer;
-  }
-  .switch-button .item {
+}
+
+.switch-button .item {
     padding: 10px 20px; /* 增大按钮的内边距 */
     border: 1px solid #ccc;
-    justify-content:center;
+    justify-content: center;
     border-radius: 10px; /* 增大按钮的圆角 */
     background-color: #f0f0f0;
     transition: background-color 0.3s ease;
     white-space: nowrap; /* 禁止文本换行 */
-    font-size: 14pt;/*中間按鈕文字大小*/
-  }
+    font-size: 14pt; /* 中間按鈕文字大小 */
+}
 
-  .pause-button {
-     margin: 0 20px; /* Add margin between pause button and switch buttons */
-  }
-  /*以上是*//* 計時器按钮样式 */
+.pause-button {
+    margin: 0 20px; /* Add margin between pause button and switch buttons */
+}
 
-
-  /*心跳步數大卡*/
-/* 調整數據顯示區塊樣式 */
+/* 心跳步數大卡 */
 .additional-info {
-  display: flex; /* 使用 Flex 布局 */
-  float: right; /* 将容器向右浮动 */
-  margin-top: 0px; /* 增加顶部间距 */
-  margin-left: 90px; /* 增加左侧间距 */
-  text-align: left; /* 将文本右对齐 */
-  white-space: nowrap; /* 禁止文本换行 */
-  align-items: center; /* 垂直居中对齐 */
-  font-size: 14pt;
-  justify-content: flex-end; /* 水平靠右对齐 */
+    display: flex; /* 使用 Flex 布局 */
+    float: right; /* 将容器向右浮动 */
+    margin-top: 0px; /* 增加顶部间距 */
+    margin-left: 90px; /* 增加左侧间距 */
+    text-align: left; /* 将文本右对齐 */
+    white-space: nowrap; /* 禁止文本换行 */
+    align-items: center; /* 垂直居中对齐 */
+    font-size: 14pt;
+    justify-content: flex-end; /* 水平靠右对齐 */
 }
 
 .additional-info span {
-  margin-right: 30px; /* 增加各个文字之间的间距 */
+    margin-right: 30px; /* 增加各个文字之间的间距 */
 }
 
-/* 體重確認按鈕樣式 */
 .additional-info button {
-  border: 1px solid #e9e8e8; /* 灰色邊框 */
-  border-radius: 5px; /* 圓角 */
-  padding: 5px 10px; /* 设置内边距 */
-  cursor: pointer; /* 鼠标指针样式 */
-  margin-left: 5px; /* 增加左侧间距 */
-  margin-right: 30px; /* 增加左侧间距 */
-  background-color: #f6f6f6; /* 鼠标悬停时的背景色 */
-  text-align: center; /* 文字內容置中 */
+    border: 1px solid #e9e8e8; /* 灰色邊框 */
+    border-radius: 5px; /* 圓角 */
+    padding: 5px 10px; /* 设置内边距 */
+    cursor: pointer; /* 鼠标指针样式 */
+    margin-left: 5px; /* 增加左侧间距 */
+    margin-right: 30px; /* 增加左侧间距 */
+    background-color: #f6f6f6; /* 鼠标悬停时的背景色 */
+    text-align: center; /* 文字內容置中 */
 }
 
 /* 調整輸入框樣式 */
 input[type="number"] {
-  width: 70px;
-  border: 5px solid #1918188e; /* 灰色邊框 */
-  border-radius: 5px; /* 圓角 */
-  padding: 5px; /* 內邊距 */
-  box-sizing: border-box; /* 讓內邊距和邊框不會改變元素的寬度 */
-  margin: 0 auto; /* 水平居中 */
-  text-align: center; /* 文字內容置中 */
+    width: 70px;
+    border: 1px solid #1918188e; /* 灰色邊框 */
+    border-radius: 5px; /* 圓角 */
+    padding: 5px; /* 內邊距 */
+    box-sizing: border-box; /* 讓內邊距和邊框不會改變元素的寬度 */
+    margin: 0 auto; /* 水平居中 */
+    text-align: center; /* 文字內容置中 */
 }
 
-
-    
-
-  /* 以下是*//*媒體按鈕樣式 */
-    #media {
-      display: flex;
-      justify-content: flex-end; /* 按钮右对齐 */
-      margin-left: auto; /* 将按钮推到右侧 */
-  }
-  
-  .item {
-      display: flex;
-      align-items: center;
-      margin-left: 10px; /* 左侧间距 */
-      padding: 5px 10px; /* 按钮内边距 */
-      border: 1px solid #ccc; /* 边框 */
-      border-radius: 5px; /* 圆角 */
-
-      height: 40px; /* 设置按钮高度 */
-  }
-  
-  .item i {
-      margin-right: 5px; /* 图标与文字之间的间距 */
-  }
-
-
-
-/* 以下是圖片庫 */
-#galleryButton { 
-  width: 30px;
-  height: 30px;
-  position: absolute;
-  margin-top: 0px; /* 增加顶部间距 */
-  margin-left: 90px; /* 增加左侧间距 */
+/* 媒體按鈕樣式 */
+#media {
+    display: flex;
+    justify-content: flex-end; /* 按钮右对齐 */
+    margin-left: auto; /* 将按钮推到右侧 */
 }
 
-
-
-
-}
-/*上面勿動上面勿動上面勿動上面勿動上面勿動上面勿動*/
-
-
-/*彈跳視窗*/
-.gallery {
-  position: fixed;
-  left: 10;
-  background-color: white;
-  display: none;
-}
-
-/*彈跳視窗按鈕*/
-.gallery button {
-  display: block;
-  margin-bottom: 10px;
-  width: auto;
-  padding: 5px 10px;
-  border: none;
-  background-color: #fff;
-  cursor: pointer;
-}
-
-
-
-
-.gallery {
-  position: fixed;
-  right:20px;
-  top:180px;
-  background-color: white;
-  display: none;
-  max-width: 150px; /* Set maximum width to ensure it doesn't become too wide */
-  max-height: 80vh; /* Set maximum height to 80% of viewport height */
-  overflow: auto; /* Enable scrolling if needed */
-}
-
-
-
-/* 調整輸入框樣式 */
-input[type="number"] {
-  width: 70px;
-  border: 1px solid #e9e8e8; /* 灰色邊框 */
-  border-radius: 5px; /* 圓角 */
-  padding: 5px; /* 內邊距 */
-  box-sizing: border-box; /* 讓內邊距和邊框不會改變元素的寬度 */
-  outline: none; /* 移除默認的焦點邊框 */
-  margin: 0 auto; /* 水平居中 */
-  text-align: center; /* 文字內容置中 */
-}
-
-
-
-
-.countdown-container {
-  display: flex;
-  align-items: center;
-  margin-left: -400px;
-}
-
-.countdown-container span {
-  margin-right: 10px;
-  color: rgb(255, 255, 255); /* 设置白色文字颜色 */
-}
-.countdown-timer{
-    margin-right: 10px;
-  color: rgb(255, 255, 255); /* 设置白色文字颜色 */
-  padding: 5px 10px; /* 添加内边距 */
-  border-radius: 5px; /* 添加圆角 */
-
-}
-
-
-
-
-/*以下語音導覽*/
-.gif-container {
-  position: absolute;
-  top: 80%;
-  left: 20%;
-  transform: translate(-50%, -50%);
-}
-  .gif-container .gif-image {
-    width: 150px; /* 设置 GIF 图像的宽度 */
-    height: auto; /* 根据宽度等比例调整高度 */
-    filter: brightness(0) invert(1);
-  }
-
-  
-  
-.text-box {
-    display: none; /* 默认隐藏 */
-    position: absolute;
-    top: 80%; /* 根据需要调整位置 */
-    left: 25%; /* 根据需要调整位置 */
-    background-color: rgba(255, 255, 255, 0.7); /* 背景颜色，这里设置为半透明白色 */
-    padding: 10px; /* 文本框内边距 */
+.item {
+    display: flex;
+    align-items: center;
+    margin-left: 10px; /* 左侧间距 */
+    padding: 5px 10px; /* 按钮内边距 */
+    border: 1px solid #ccc; /* 边框 */
     border-radius: 5px; /* 圆角 */
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* 阴影效果 */
+    height: 40px; /* 设置按钮高度 */
 }
 
-  .text-box p {
-      margin: 0; /* 清除段落的默认边距 */
-      font-size: 14px; /* 文本字体大小 */
-      color: #333; /* 文本颜色 */
-  }
-  /*以上語音導覽*/
+.item i {
+    margin-right: 5px; /* 图标与文字之间的间距 */
+}
+
+/* 圖片庫 */
+#galleryButton { 
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 0px; /* 增加顶部间距 */
+    margin-left: 90px; /* 增加左侧间距 */
+}
+
+/* 彈跳視窗 */
+.gallery {
+    position: fixed;
+    right: 20px;
+    top: 180px;
+    background-color: white;
+    display: none;
+    max-width: 150px; /* Set maximum width to ensure it doesn't become too wide */
+    max-height: 80vh; /* Set maximum height to 80% of viewport height */
+    overflow: auto; /* Enable scrolling if needed */
+}
+
+/* 彈跳視窗按鈕 */
+.gallery button {
+    display: block;
+    margin-bottom: 10px;
+    width: auto;
+    padding: 5px 10px;
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+/* 調整輸入框樣式 */
+input[type="number"] {
+    width: 70px;
+    border: 1px solid #e9e8e8; /* 灰色邊框 */
+    border-radius: 5px; /* 圓角 */
+    padding: 5px; /* 內邊距 */
+    box-sizing: border-box; /* 讓內邊距和邊框不會改變元素的寬度 */
+    outline: none; /* 移除默認的焦點邊框 */
+    margin: 0 auto; /* 水平居中 */
+    text-align: center; /* 文字內容置中 */
+}
+
+/*
+
